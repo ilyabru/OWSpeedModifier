@@ -1,0 +1,30 @@
+{
+  "enabled": true,
+  "settings": {
+    "changeSpeedKey": {
+      "type": "text",
+      "title": "Change Speed Key (Defaults to: V)",
+      "value": "V"
+    },
+    "speedLevels": {
+      "type": "selector",
+      "title": "Total Speeds",
+      "options": [ 2, 3, 5 ],
+      "value": 2
+    },
+    "toggleToChangeSpeed": {
+      "type": "toggle",
+      "title": "Toggle or Hold (Only When Total Speeds = 2)",
+      "yes": "Toggle",
+      "no": "Hold",
+      "value": true
+    },
+    "boostResetsSpeedToMaxValue": {
+      "type": "toggle",
+      "title": "Boost Resets Speed to Max Value",
+      "yes": "Yes",
+      "no": "No",
+      "value": true
+    }
+  }
+}

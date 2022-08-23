@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/amazingalek/owml/master/schemas/manifest_schema.json",
+  "filename": "OWSpeedModifier.dll",
+  "author": "ilyabru",
+  "name": "Speed Modifier/Walk Button on KBM",
+  "uniqueName": "ilyabru.OWSpeedModifier",
+  "version": "1.0.0",
+  "owmlVersion": "2.6.0"
+}
