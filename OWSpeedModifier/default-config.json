@@ -29,6 +29,14 @@
       "no": "No",
       "value": true,
       "tooltip": "Boost Resets Speed to Max Value"
+    },
+    "enterOrExitCockpitResetsSpeedToMaxValue": {
+      "type": "toggle",
+      "title": "Enter Or Exit Cockpit Resets Speed to Max Value",
+      "yes": "Yes",
+      "no": "No",
+      "value": true,
+      "tooltip": "Enter Or Exit Cockpit Resets Speed to Max Value"
     }
   }
 }

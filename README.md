@@ -9,9 +9,4 @@ Change your movement speed using the keyboard input in Outer Wilds when walking,
 * **Total Speeds**: Select how many speed levels you want to step through (2, 3 or 5)
 * **Toggle or Hold**: Toggle or hold key to change speed (Only works when Total Speeds = 2)
 * **Boost Resets Speed to Max Value**: An easy way to reset speed to max when on foot
-
-## Possible TODOs
-
-* Allow mouse inputs for the speed key
-* Show optional walking dude icon when activated
-* Reset speed to max value when entering/leaving the ship
+* **Enter Or Exit Cockpit Resets Speed to Max Value**: Reset speed to max when entering/exiting ship cockpit

@@ -14,17 +14,19 @@ namespace OWSpeedModifier
         public static int TotalSpeeds { get; set; } = 2;
         public static bool ToggleToChangeSpeed { get; set; } = true;
         public static bool BoostResetsSpeedToMaxValue { get; set; } = true;
+        public static bool EnterOrExitCockpitResetsSpeedToMaxValue { get; set; } = false;
 
         private static float Offset => TotalSpeeds == 2 ? 0.19f : 0.0f;
         public static float SpeedMultiplier => (0.2f + Offset) + (0.80f * (currentSpeed - 1.0f) / (TotalSpeeds - 1.0f));
-            
+
         public override void Configure(IModConfig config)
         {
             base.Configure(config);
 
-            BoostResetsSpeedToMaxValue = config.GetSettingsValue<bool>("boostResetsSpeedToMaxValue");
             TotalSpeeds = config.GetSettingsValue<int>("speedLevels");
             ToggleToChangeSpeed = config.GetSettingsValue<bool>("toggleToChangeSpeed");
+            BoostResetsSpeedToMaxValue = config.GetSettingsValue<bool>("boostResetsSpeedToMaxValue");
+            EnterOrExitCockpitResetsSpeedToMaxValue = config.GetSettingsValue<bool>("enterOrExitCockpitResetsSpeedToMaxValue");
 
             // Parse text into UnityEngine.InputSystem.Key Enum
             string changeSpeedKeyFromConfig = config.GetSettingsValue<string>("changeSpeedKey");
@@ -48,6 +50,8 @@ namespace OWSpeedModifier
             ModHelper.HarmonyHelper.AddPostfix<OWInput>(nameof(OWInput.GetAxisValue), typeof(Patches), nameof(Patches.PostGetAxisValue));
             ModHelper.HarmonyHelper.AddPostfix<OWInput>(nameof(OWInput.GetValue), typeof(Patches), nameof(Patches.PostGetValue));
             ModHelper.HarmonyHelper.AddPrefix<JetpackThrusterModel>(nameof(JetpackThrusterModel.ActivateBoost), typeof(Patches), nameof(Patches.BoostResetsSpeed));
+            ModHelper.HarmonyHelper.AddPrefix<ShipCockpitController>(nameof(ShipCockpitController.OnPressInteract), typeof(Patches), nameof(Patches.EnterOrExitCockpitResetsSpeed));
+            ModHelper.HarmonyHelper.AddPrefix<ShipCockpitController>(nameof(ShipCockpitController.ExitFlightConsole), typeof(Patches), nameof(Patches.EnterOrExitCockpitResetsSpeed));
         }
 
         private void Update()
@@ -101,6 +105,12 @@ namespace OWSpeedModifier
             public static void BoostResetsSpeed()
             {
                 if (BoostResetsSpeedToMaxValue)
+                    currentSpeed = TotalSpeeds;
+            }
+
+            public static void EnterOrExitCockpitResetsSpeed()
+            {
+                if (EnterOrExitCockpitResetsSpeedToMaxValue)
                     currentSpeed = TotalSpeeds;
             }
         }
