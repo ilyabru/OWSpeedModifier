@@ -3,28 +3,32 @@
   "settings": {
     "changeSpeedKey": {
       "type": "text",
-      "title": "Change Speed Key (Defaults to: V)",
-      "value": "V"
+      "title": "Change Speed Key",
+      "value": "V",
+      "tooltip": "Keyboard only, defaults to key: 'V'"
     },
     "speedLevels": {
       "type": "selector",
       "title": "Total Speeds",
       "options": [ 2, 3, 5 ],
-      "value": 2
+      "value": 2,
+      "tooltip": "Speed will roll over when going past this value"
     },
     "toggleToChangeSpeed": {
       "type": "toggle",
-      "title": "Toggle or Hold (Only When Total Speeds = 2)",
+      "title": "Toggle or Hold Key to Change Speed",
       "yes": "Toggle",
       "no": "Hold",
-      "value": true
+      "value": true,
+      "tooltip": "Only works when Total Speeds = 2"
     },
     "boostResetsSpeedToMaxValue": {
       "type": "toggle",
       "title": "Boost Resets Speed to Max Value",
       "yes": "Yes",
       "no": "No",
-      "value": true
+      "value": true,
+      "tooltip": "Boost Resets Speed to Max Value"
     }
   }
 }

@@ -15,9 +15,9 @@ namespace OWSpeedModifier
         public static bool ToggleToChangeSpeed { get; set; } = true;
         public static bool BoostResetsSpeedToMaxValue { get; set; } = true;
 
-        private const float offset = 0.19f;
-        public static float SpeedMultiplier => (0.2f + offset) + (0.80f * (currentSpeed - 1.0f) / (TotalSpeeds - 1.0f));
-
+        private static float Offset => TotalSpeeds == 2 ? 0.19f : 0.0f;
+        public static float SpeedMultiplier => (0.2f + Offset) + (0.80f * (currentSpeed - 1.0f) / (TotalSpeeds - 1.0f));
+            
         public override void Configure(IModConfig config)
         {
             base.Configure(config);
